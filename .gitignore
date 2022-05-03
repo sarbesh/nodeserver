@@ -75,3 +75,13 @@ bower_components/
 .grunt/
 src/vendor/
 dist/
+
+# IDE #
+################
+.idea/
+.vscode/
+.iml
+.vscodeignore
+.project
+.settings/
+
