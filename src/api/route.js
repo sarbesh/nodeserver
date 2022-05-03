@@ -14,4 +14,6 @@ router.route('/hello')
     });
 });
 
+router.route('/search_vaccine_pincode').post(core.search_vaccine_pincode);
+
 module.exports = router;

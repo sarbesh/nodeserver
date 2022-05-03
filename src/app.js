@@ -4,6 +4,7 @@ router = require('./api/route'),
 invest = require('./api/investment'),
 bodyParser = require('body-parser'),
 mongoose = require('mongoose');
+global.logger = require('./utilities/winston');
 
 const {mongo_url} = require('./config');
 
@@ -22,7 +23,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(router);
-app.use('/invest',invest);
+app.use('/api',router);
+app.use('/api/invest',invest);
 
 module.exports = app,mongoose;
