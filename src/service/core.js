@@ -31,6 +31,7 @@ exports.search_vaccine_pincode = (req,res) => {
             let data = [];
             body.centers.flatMap(cnt => {
                 cnt.sessions.flatMap(sess => {
+                    let precaution_dose = sess.available_capacity-(sess.available_capacity_dose1+sess.available_capacity_dose2);
                     if(sess.available_capacity > 0 && (sess.allow_all_age==='true' || (sess.min_age_limit <= age && sess.max_age_limit >= age))) {
                         logger.put('debug','[core][search_vaccine_pincode][Data]Session:'+sess.session_id+' Date:'+sess.date+' capacity:'+sess.available_capacity);
                         data.push({ 
@@ -41,6 +42,9 @@ exports.search_vaccine_pincode = (req,res) => {
                             'session': sess.session_id,
                             'date': sess.date,
                             'available_capacity': sess.available_capacity,
+                            'available_capacity_dose1': sess.available_capacity_dose1,
+                            'available_capacity_dose2': sess.available_capacity_dose2,
+                            'available_capacity_precaution': precaution_dose,
                             'min_age_limit': sess.min_age_limit,
                             'max_age_limit': sess.max_age_limit,
                             'allow_all_age': sess.allow_all_age,
