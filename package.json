@@ -4,6 +4,7 @@
   "description": "Nodejs and learning app",
   "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sarbesh Kumar Sarkar",
@@ -20,6 +21,7 @@
     "mongoose": "^6.1.8",
     "mysql2": "^2.3.3",
     "request": "^2.88.2",
+    "sequelize": "^6.21.4",
     "winston": "^3.7.2",
     "xlsx": "^0.18.5"
   },

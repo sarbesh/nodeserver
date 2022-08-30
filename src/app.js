@@ -2,13 +2,9 @@ const express = require("express"),
 app = express(),
 router = require('./api/route'),
 invest = require('./api/investment'),
-bodyParser = require('body-parser'),
-mongoose = require('mongoose');
+comments = require('./api/comments'),
+bodyParser = require('body-parser');
 global.logger = require('./utilities/winston');
-
-const {mongo_url} = require('./config');
-
-mongoose.connect(mongo_url);
 
 //To parse URL encoded data
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -25,5 +21,6 @@ app.use((req, res, next) => {
 
 app.use('/api',router);
 app.use('/api/invest',invest);
+app.use('/api/comments',comments);
 
 module.exports = app,mongoose;
