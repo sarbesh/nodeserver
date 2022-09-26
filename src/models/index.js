@@ -1,16 +1,16 @@
 const Sequelize = require('sequelize'),
 mongoose = require('mongoose');
 const logger = require('../utilities/winston');
-const {mongo_url} = require('./config');;
+const config = require('./config');;
 
 const db = {};
 const sequelize = new Sequelize('mydb', null, null, {
     dialect: 'mysql',
     replication: {
         read: [
-            { host: 'localhost', port: 5506, username: 'mydb_slave_user', password: 'mydb_slave_pwd' },
+            { host: config.mysql_read_url, port: config.mysql_read_port, username: config.mysql_read_user, password:  config.mysql_read_password },
         ],
-        write: { host: 'localhost', port: 4406, username: 'mydb_user', password: 'mydb_pwd' }
+        write: { host: config.mysql_write_url, port: config.mysql_write_port, username: config.mysql_write_user, password:  config.mysql_write_password }
     }
 }
 );
@@ -24,7 +24,7 @@ sequelize.authenticate().then(() => {
 });
 
 
-mongoose.connect(mongo_url);
+mongoose.connect(config.mongo_url);
 
 const mongodb = mongoose.connection;
 
