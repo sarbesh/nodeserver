@@ -1,5 +1,6 @@
-const res = require('express/lib/response');
-const InvestmentModel = require('../model/investment');
+const res = require('express/lib/response'),
+models = require('../models');
+const InvestmentModel = require('../models/investment');
 
 exports.saveInvestment = (req,res) => {
     var investment = req.body;
