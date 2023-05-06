@@ -16,4 +16,6 @@ router.route('/hello')
 
 router.route('/search_vaccine_pincode').post(core.search_vaccine_pincode);
 
+router.route('/testing_api').post(core.testing_method);
+
 module.exports = router;
